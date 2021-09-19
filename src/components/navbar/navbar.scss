@@ -1,0 +1,30 @@
+
+
+.navbar {
+    width: 75vw;
+    height: 8vh;
+    margin: 0 auto;
+    background-color: lightcoral;
+}
+
+.logo {
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+.navlinks {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10vw;
+}
+
+.navlinks li {
+    text-decoration: none;
+    list-style: none;
+    word-spacing: 5px;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}

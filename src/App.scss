@@ -1,0 +1,60 @@
+@import "./global.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.container {
+  height: 92vh;
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: $mainColor;
+}
+.menu {
+  display: grid;
+  grid-template-columns: 50vw;
+  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
+  grid-gap: 20px;
+}
+.play {
+  background-color: rgb(218, 198, 198);
+  @include flex-center;
+  @include border-radius;
+  @include font-weight;
+}
+.mode {
+  background-color: rgb(194, 157, 157);
+  @include flex-center;
+  @include border-radius;
+  @include font-weight;
+}
+.settings {
+  background-color: rgb(160, 116, 116);
+  @include flex-center;
+  @include border-radius;
+  @include font-weight;
+}
+.resources {
+  background-color: rgb(124, 76, 76);
+  @include flex-center;
+  @include border-radius;
+  @include font-weight;
+}
+.challenge {
+  background-color: rgb(124, 64, 64);
+  @include flex-center;
+  @include border-radius;
+  @include font-weight;
+}
+.materials {
+  background-color: rgb(112, 40, 40);
+  @include flex-center;
+  @include border-radius;
+  @include font-weight;
+}
