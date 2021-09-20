@@ -10,7 +10,7 @@ import Materials from "./components/materials/Materials";
 
 function App() {
   return (
-    <>
+    <div className="GlobalApp">
       <NavBar />
       <Router>
         <Switch>
@@ -58,7 +58,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </>
+    </div>
   );
 }
 

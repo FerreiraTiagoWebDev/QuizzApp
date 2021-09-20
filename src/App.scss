@@ -5,6 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
+  
+}
+
+.GlobalApp {
+  background: url("https://www.pexels.com/photo/text-1089440/");
+  object-fit: cover;
 }
 
 .container {
@@ -42,19 +48,19 @@
   @include font-weight;
 }
 .resources {
-  background-color: rgb(124, 76, 76);
+  background-color: rgb(161, 109, 109);
   @include flex-center;
   @include border-radius;
   @include font-weight;
 }
 .challenge {
-  background-color: rgb(124, 64, 64);
+  background-color: rgb(150, 103, 103);
   @include flex-center;
   @include border-radius;
   @include font-weight;
 }
 .materials {
-  background-color: rgb(112, 40, 40);
+  background-color: rgb(158, 88, 88);
   @include flex-center;
   @include border-radius;
   @include font-weight;

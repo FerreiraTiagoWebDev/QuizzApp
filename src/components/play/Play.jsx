@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Game from "./game/Game";
 import "./play.scss";
 
 function Play() {
+
+
   return (
     <Router>
       <Switch>
@@ -28,7 +30,7 @@ function Play() {
           </div>
         </Route>
         <Route exact path="/game">
-          <Game />
+          <Game/>
         </Route>
       </Switch>
     </Router>
