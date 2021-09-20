@@ -1,0 +1,26 @@
+
+.modeContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modeTitle {
+    margin-top: 10vh;
+    margin-bottom: 3vh;
+}
+
+.menuForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+    flex-direction: column;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3vh;
+    }
+}

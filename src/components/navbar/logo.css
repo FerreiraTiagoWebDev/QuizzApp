@@ -1,7 +1,7 @@
 
 
 .App-logo {
-  height: 8vmin;
+  height: 7vh;
   cursor: pointer;
   
 }
@@ -13,7 +13,7 @@
 }
 
 .App-header {
-  min-height: 8vh;
+  min-height: 7vh;
 }
 
 @keyframes App-logo-spin {

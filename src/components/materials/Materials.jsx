@@ -3,7 +3,7 @@ import "./materials.scss";
 
 function Materials() {
   return (
-    <div className="container">
+    <div className="container materialsContainer">
       <div>
         {" "}
         MATERIALS COMPONENT

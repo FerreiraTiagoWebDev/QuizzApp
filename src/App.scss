@@ -11,10 +11,11 @@
   height: 92vh;
   width: 75vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
   background-color: $mainColor;
+}
+.appContainer {
+  @include flex-center;
 }
 .menu {
   display: grid;

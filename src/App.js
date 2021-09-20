@@ -15,7 +15,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <div className="container">
+            <div className="container appContainer">
               <div className="menu">
                 <div className="play">
                   <Link to="/play">Play</Link>
@@ -33,7 +33,6 @@ function App() {
                   <Link to="/challenge">Challenge</Link>
                 </div>
                 <div className="materials">
-                  {" "}
                   <Link to="/materials">Materials</Link>{" "}
                 </div>
               </div>
