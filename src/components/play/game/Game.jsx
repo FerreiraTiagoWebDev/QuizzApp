@@ -1,8 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./game.scss";
 
-function Game() {
-  const [questionNumber, setQuestionNumber] = useState(2);
+function Game({ name, questions, score, setScore, setQuestions }) {
+  const [options, setOptions] = useState();
+  const [currQues, setCurrQues] = useState(0);
+
+  const [questionNumber, setQuestionNumber] = useState(1);
+
+  useEffect(() => {
+    console.log(questions);
+
+    setOptions(
+      questions &&
+        handleShuffle([
+          questions[currQues]?.correct_answer,
+          ...questions[currQues]?.incorrect_answers,
+        ])
+    );
+  }, [questions]);
+
+  console.log(options)
+
+  const handleShuffle = (optionss) => {
+    return optionss.sort(() => Math.random() - 0.5);
+  };
 
   const data = [
     {
@@ -31,16 +52,18 @@ function Game() {
   return (
     <div className="container gameContainer">
       <div className="gameQuestions">
-        <div className="gameMode">Mode: React</div>
-        <div className="gameTimer">Timer</div>
-        <div className="gameQuestion">
-          Which of the following is the correct answer?
+        <h1 className="subtitle">Welcome, {name}</h1>
+        <div className="gameMode">Category:</div>
+        <div className="gameTimer">120s</div>
+        <div className="gameQuestion btn-grad2">
+          <h3> {questions[currQues].question }</h3>
         </div>
       </div>
       <div className="progressionMap">
         <ul className="questionMapItem">
           {questionsMap.map((m) => (
             <li
+              key={m.id}
               className={
                 questionNumber === m.id
                   ? "questionMapItem active"
@@ -53,10 +76,10 @@ function Game() {
         </ul>
       </div>
       <div className="gameAnswers">
-        <button className="gameAnswerA">Example1</button>
-        <button className="gameAnswerB">Example2</button>
-        <button className="gameAnswerC">Example3</button>
-        <button className="gameAnswerD">Example4</button>
+        <button className="gameAnswerA">{options}</button>
+        <button className="gameAnswerB">{options}</button>
+        <button className="gameAnswerC">{options}</button>
+        <button className="gameAnswerD">{options}</button>
       </div>
     </div>
   );

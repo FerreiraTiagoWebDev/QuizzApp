@@ -10,8 +10,24 @@ import Contact from "./components/contact/Contact";
 import Materials from "./components/materials/Materials";
 import logo from "./logo.svg";
 import "./logo.css";
+import { useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [name, setName] = useState("");
+  const [questions, setQuestions] = useState("");
+  const [score, setScore] = useState(0);
+
+  const fetchQuestions = async (category = "", difficulty = "") => {
+    const { data } = await axios.get(
+      `https://opentdb.com/api.php?amount=10${
+        category && `&category=${category}`
+      }${difficulty && `&difficulty=${difficulty}`}&type=multiple`
+    );
+    console.log(data);
+    setQuestions(data.results);
+  };
+
   return (
     <div className="GlobalApp">
       <Router>
@@ -49,11 +65,21 @@ function App() {
               </div>
             </div>
           </Route>
-          <Route path="/play">
-            <Play />
+          <Route path="/play" onClick={fetchQuestions}>
+            <Play
+              name={name}
+              questions={questions}
+              score={score}
+              setScore={setScore}
+              setQuestions={setQuestions}
+            />
           </Route>
           <Route path="/mode">
-            <Mode />
+            <Mode
+              name={name}
+              setName={setName}
+              fetchQuestions={fetchQuestions}
+            />
           </Route>
           <Route path="/settings">
             <Settings />
