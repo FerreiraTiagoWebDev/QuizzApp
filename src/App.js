@@ -6,35 +6,46 @@ import Mode from "./components/mode/Mode";
 import Settings from "./components/settings/Settings";
 import Resources from "./components/resources/Resources";
 import Challenge from "./components/challenge/Challenge";
+import Contact from "./components/contact/Contact";
 import Materials from "./components/materials/Materials";
+import logo from "./logo.svg";
+import "./logo.css";
 
 function App() {
   return (
     <div className="GlobalApp">
-      <NavBar />
       <Router>
+        <NavBar />
+
         <Switch>
           <Route exact path="/">
             <div className="container appContainer">
+              <div className="logo">
+                <Link to="/">
+                  <button className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                  </button>
+                </Link>
+              </div>
               <div className="menu">
-                <div className="play">
-                  <Link to="/play">Play</Link>
-                </div>
-                <div className="mode">
-                  <Link to="/mode">Mode</Link>
-                </div>
-                <div className="settings">
-                  <Link to="/settings">Settings</Link>
-                </div>
-                <div className="resources">
-                  <Link to="/resources">Resources</Link>
-                </div>
-                <div className="challenge">
-                  <Link to="/challenge">Challenge</Link>
-                </div>
-                <div className="materials">
-                  <Link to="/materials">Materials</Link>{" "}
-                </div>
+                <Link to="/play">
+                  <button className="play btn-grad">Play</button>
+                </Link>
+                <Link to="/mode">
+                  <button className="mode btn-grad">Mode</button>
+                </Link>
+                <Link to="/settings">
+                  <button className="settings btn-grad">Settings</button>
+                </Link>
+                <Link to="/resources">
+                  <button className="resources btn-grad">Resources</button>
+                </Link>
+                <Link to="/challenge">
+                  <button className="challenge btn-grad">Challenge</button>
+                </Link>
+                <Link to="/materials">
+                  <button className="materials btn-grad">Materials</button>
+                </Link>
               </div>
             </div>
           </Route>
@@ -55,6 +66,9 @@ function App() {
           </Route>
           <Route path="/materials">
             <Materials />
+          </Route>
+          <Route path="/contact">
+            <Contact />
           </Route>
         </Switch>
       </Router>

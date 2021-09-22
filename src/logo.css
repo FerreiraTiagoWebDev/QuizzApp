@@ -1,9 +1,6 @@
-
-
 .App-logo {
-  height: 7vh;
+  height: 10vh;
   cursor: pointer;
-  
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,7 +10,16 @@
 }
 
 .App-header {
-  min-height: 7vh;
+  min-height: 5vh;
+  background-image: linear-gradient(
+    to bottom,
+    #000000ad 0%,
+    #000000ad 75%,
+    
+    #fdfdfd 100%
+    
+  );
+  border-radius: 50%;
 }
 
 @keyframes App-logo-spin {

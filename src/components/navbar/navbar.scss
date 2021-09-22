@@ -4,27 +4,26 @@
     width: 75vw;
     height: 8vh;
     margin: 0 auto;
-    background-color: lightcoral;
+    background-color: rgba($color: #003973, $alpha: 0.6);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 40px 40px 0px 0px;
 }
 
 .logo {
-    display: flex;
-    align-items:flex-start;
-    justify-content: space-evenly;
-    margin: 0 auto;
+margin: 0 auto;
 }
 .navlinks {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
-    padding-right: 5vw;
+    padding-right: 2vw;
 }
 
 .navlinks li {
     text-decoration: none;
     list-style: none;
     word-spacing: 5px;
-    display: flex;
-    justify-content: flex-end;
     margin: 10px;
 }

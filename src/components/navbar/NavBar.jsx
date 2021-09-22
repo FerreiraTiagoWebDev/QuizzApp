@@ -1,30 +1,27 @@
 import React from "react";
 import "./navbar.scss";
-import logo from "./logo.svg";
-import "./logo.css";
-import { BrowserRouter as Router, } from "react-router-dom";
+
+import { Link} from "react-router-dom";
 
 
 function NavBar() {
   return (
-    <Router>
-      <div className="navbar">
-        <div className="logo">
-          <section className="App-header">
-            <button>
-              <a href="/">
-                <img src={logo} className="App-logo" alt="logo" />
-              </a>
-            </button>
-          </section>
-        </div>
-        {/* <ul className="navlinks">
-          <li>Rules</li>
-          <li>Team</li>
+    <div className="navbar">
+       <Link to="/">
+      <h1>Home</h1>
+      </Link>
+      <ul className="navlinks">
+        <Link to="/mode">
+          <li>Mode</li>
+        </Link>
+        <Link to="settings">
+          <li>Settings</li>
+        </Link>
+        <Link to="/contact">
           <li>Contact</li>
-        </ul> */}
-      </div>
-    </Router>
+        </Link>
+      </ul>
+    </div>
   );
 }
 

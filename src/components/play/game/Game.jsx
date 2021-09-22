@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./game.scss";
 
 function Game() {
-  const [questionNumber, setQuestionNumber] = useState(1);
+  const [questionNumber, setQuestionNumber] = useState(2);
 
   const data = [
     {

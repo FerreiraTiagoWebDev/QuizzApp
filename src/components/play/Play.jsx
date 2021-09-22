@@ -5,7 +5,6 @@ import "./play.scss";
 
 function Play() {
 
-
   return (
     <Router>
       <Switch>
@@ -30,7 +29,7 @@ function Play() {
           </div>
         </Route>
         <Route exact path="/game">
-          <Game/>
+          <Game />
         </Route>
       </Switch>
     </Router>

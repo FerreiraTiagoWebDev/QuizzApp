@@ -1,29 +1,51 @@
+import { Button, MenuItem, TextField } from "@material-ui/core";
 import React from "react";
 import "./mode.scss";
+import Categories from "../../Data/Categories";
 
 function Mode() {
   return (
     <div className="container modeContainer">
-      <h1 className="modeTitle">
-        You can choose the subject of the questions:
-      </h1>
-      <h3>You can combine different topics:</h3>
-      <form className="menuForm"> 
-        <input type="checkbox" id="reactCB" name="reactCB" value="React" />
-        <label htmlFor="reactCB">React</label>
-        <input
-          type="checkbox"
-          id="javascriptCB"
-          name="javascriptCB"
-          value="Javascript"
+      <h1 className="modeTitle">Mode Selection</h1>
+      <div className="modeSelect">
+        <TextField
+          style={{ marginBottom: 25 }}
+          label="Enter Your Name"
+          variant="outlined"
         />
-        <label htmlFor="javascriptCB">Javascript</label>
-        <input type="checkbox" id="gitCB" name="gitCB" value="Git" />
-        <label htmlFor="gitCB">Git</label>
-        <input type="checkbox" id="cssCB" name="cssCB" value="CSS" />
-        <label htmlFor="cssCB">Css</label>
-        <button type="button">Save Changes</button>
-      </form>
+        <TextField
+          select
+          style={{ marginBottom: 25 }}
+          label="Select Category"
+          variant="outlined"
+        >
+          {Categories.map((cat) => (
+            <MenuItem key={cat.category} value={cat.value}>
+              {cat.category}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <TextField
+          select
+          label="SelectDifficulty"
+          variant="outlined"
+          style={{ marginBottom: 30 }}
+        >
+          <MenuItem key="Easy" value="easy">
+            Easy
+          </MenuItem>
+          <MenuItem key="Medium" value="medium">
+            Medium
+          </MenuItem>
+          <MenuItem key="Hard" value="hard">
+            Hard
+          </MenuItem>
+        </TextField>
+        <Button variant="contained" color="primary" size="large">
+          Start Quiz
+        </Button>
+      </div>
     </div>
   );
 }

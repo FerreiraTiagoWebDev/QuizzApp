@@ -5,12 +5,26 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
-  
+}
+a {
+  text-decoration: inherit;
+  color: inherit;
 }
 
 .GlobalApp {
-  background: url("https://www.pexels.com/photo/text-1089440/");
-  object-fit: cover;
+  background-image: url(./BG.png);
+  background-position: center;
+  background-size: fill;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.logo {
+  position: absolute;
+  top: 12vh;
 }
 
 .container {
@@ -18,28 +32,69 @@
   width: 75vw;
   display: flex;
   margin: 0 auto;
-  background-color: $mainColor;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  border-radius: 0px 0px 40px 40px;
 }
 .appContainer {
   @include flex-center;
 }
 .menu {
-  display: grid;
-  grid-template-columns: 50vw;
-  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh;
-  grid-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 80%;
+  margin-top: 15vh;
+
+  button {
+    margin-bottom: 2vh;
+  }
 }
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #003973 0%,
+    #e5e5be 51%,
+    #003973 100%
+  );
+  width: 40vw;
+  height: 8vh;
+}
+.btn-grad {
+  margin: 10px;
+  padding: 15px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+  scale: 1.5;
+}
+
 .play {
-  background-color: rgb(218, 198, 198);
-  @include flex-center;
-  @include border-radius;
-  @include font-weight;
-}
-.mode {
   background-color: rgb(194, 157, 157);
   @include flex-center;
   @include border-radius;
   @include font-weight;
+}
+
+.mode {
+  @include border-radius;
+  @include font-weight;
+  .btn-grad:hover {
+    background-position: center left;
+  }
 }
 .settings {
   background-color: rgb(160, 116, 116);
