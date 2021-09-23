@@ -20,6 +20,7 @@ function Mode({ name, setName, fetchQuestions }) {
       setError(false);
       fetchQuestions(category, difficulty);
       history.push("/play");
+
     }
   };
 

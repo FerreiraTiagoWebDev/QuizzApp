@@ -4,18 +4,21 @@ import Game from "./game/Game";
 import "./play.scss";
 
 function Play({ name, questions, score, setScore, setQuestions }) {
+
+
+  const [currQues, setCurrQues] = useState(0);
   return (
     <Router>
       <Switch>
         <Route exact path="/play">
           <div className="container playContainer">
             <section>
-              <h1 className="playTitle">Welcome to the Coding Quizz</h1>
-              <h2 className="playTitle2">Mode: React</h2>
+              <h1 className="playTitle">Welcome, {name} to the Coding Quizz</h1>
+              <h2 className="playTitle2">Category:  </h2>
             </section>
             <section>
               <div className="playIntro">
-                15 questions with 2 minutes per question, press start when you
+                10 questions with 30 seconds per question, press start when you
                 are ready!
               </div>
             </section>

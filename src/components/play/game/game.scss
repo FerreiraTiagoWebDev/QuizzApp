@@ -80,10 +80,10 @@
   grid-column: 1/3;
   grid-row: 2/3;
   background-color: rgba($color: #0d0c4d, $alpha: 0.2);
-  display: grid;
-  grid-template-columns: 30vw 30vw;
-  grid-template-rows: 10vh 10vh;
-  grid-gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 10px;
 
@@ -132,6 +132,33 @@
 }
 
 .btn-grad2:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+.btn-grad3 {
+  background-image: linear-gradient(
+    to left,
+    #4e4376 0%,
+    #2b5876 51%,
+    #4e4376 100%
+  );
+}
+.btn-grad3 {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  padding: 30px 75px;
+  margin-bottom: 9vh;
+}
+
+.btn-grad3:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;

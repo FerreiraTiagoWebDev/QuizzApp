@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
+import ErrorMessage from "../../errorMessage/ErrorMessage";
 import "./game.scss";
 
 function Game({ name, questions, score, setScore, setQuestions }) {
   const [options, setOptions] = useState();
   const [currQues, setCurrQues] = useState(0);
 
-  const [questionNumber, setQuestionNumber] = useState(1);
+  const [selected, setSelected] = useState()
+
+
+  const [questionNumber, setQuestionNumber] = useState(3);
+
 
   useEffect(() => {
     console.log(questions);
@@ -19,7 +24,7 @@ function Game({ name, questions, score, setScore, setQuestions }) {
     );
   }, [questions]);
 
-  console.log(options)
+  console.log(options);
 
   const handleShuffle = (optionss) => {
     return optionss.sort(() => Math.random() - 0.5);
@@ -52,11 +57,13 @@ function Game({ name, questions, score, setScore, setQuestions }) {
   return (
     <div className="container gameContainer">
       <div className="gameQuestions">
-        <h1 className="subtitle">Welcome, {name}</h1>
-        <div className="gameMode">Category:</div>
-        <div className="gameTimer">120s</div>
+        <h1 className="subtitle">Welcome, {name}, your score: {score}</h1>
+        <div className="gameMode">
+          Category: {questions[currQues].category}:
+        </div>
+        <div className="gameTimer">30s</div>
         <div className="gameQuestion btn-grad2">
-          <h3> {questions[currQues].question }</h3>
+          <h3> {questions[currQues].question}</h3>
         </div>
       </div>
       <div className="progressionMap">
@@ -72,14 +79,14 @@ function Game({ name, questions, score, setScore, setQuestions }) {
             >
               {m.question}
             </li>
+            
           ))}
         </ul>
+        
       </div>
       <div className="gameAnswers">
-        <button className="gameAnswerA">{options}</button>
-        <button className="gameAnswerB">{options}</button>
-        <button className="gameAnswerC">{options}</button>
-        <button className="gameAnswerD">{options}</button>
+       
+        {options && options.map((i) => <button className="btn-grad3" onClick={() => {}}>{i}</button>)}
       </div>
     </div>
   );

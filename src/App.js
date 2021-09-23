@@ -18,6 +18,7 @@ function App() {
   const [questions, setQuestions] = useState("");
   const [score, setScore] = useState(0);
 
+
   const fetchQuestions = async (category = "", difficulty = "") => {
     const { data } = await axios.get(
       `https://opentdb.com/api.php?amount=10${
@@ -44,7 +45,7 @@ function App() {
                 </Link>
               </div>
               <div className="menu">
-                <Link to="/play">
+                <Link to="/mode">
                   <button className="play btn-grad">Play</button>
                 </Link>
                 <Link to="/mode">
