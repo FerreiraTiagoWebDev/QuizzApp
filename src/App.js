@@ -12,6 +12,7 @@ import logo from "./logo.svg";
 import "./logo.css";
 import { useState } from "react";
 import axios from "axios";
+import Result from "./components/result/Result";
 
 function App() {
   const [name, setName] = useState("");
@@ -28,6 +29,7 @@ function App() {
     console.log(data);
     setQuestions(data.results);
   };
+
 
   return (
     <div className="GlobalApp">
@@ -73,6 +75,7 @@ function App() {
               score={score}
               setScore={setScore}
               setQuestions={setQuestions}
+              
             />
           </Route>
           <Route path="/mode">
@@ -96,6 +99,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/result">
+            <Result name={name} score={score} />
           </Route>
         </Switch>
       </Router>

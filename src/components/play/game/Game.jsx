@@ -1,20 +1,19 @@
+import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import ErrorMessage from "../../errorMessage/ErrorMessage";
 import "./game.scss";
 
 function Game({ name, questions, score, setScore, setQuestions }) {
   const [options, setOptions] = useState();
   const [currQues, setCurrQues] = useState(0);
+  const [questionNumber, setQuestionNumber] = useState(1);
+  const [selected, setSelected] = useState();
 
-  const [selected, setSelected] = useState()
-
-
-  const [questionNumber, setQuestionNumber] = useState(3);
-
+  const history = useHistory();
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    console.log(questions);
-
     setOptions(
       questions &&
         handleShuffle([
@@ -22,7 +21,7 @@ function Game({ name, questions, score, setScore, setQuestions }) {
           ...questions[currQues]?.incorrect_answers,
         ])
     );
-  }, [questions]);
+  }, [currQues, questions]);
 
   console.log(options);
 
@@ -30,11 +29,39 @@ function Game({ name, questions, score, setScore, setQuestions }) {
     return optionss.sort(() => Math.random() - 0.5);
   };
 
-  const data = [
-    {
-      id: 1,
-    },
-  ];
+  const correct = questions[currQues].correct_answer;
+
+  const handleSelect = (i) => {
+    if (selected === i && selected === correct) {
+      return "select";
+    } else if (selected === i && selected !== correct) {
+      return "wrong";
+    } else if (i === correct) {
+      return "select";
+    }
+  };
+
+  const handleCheck = (i) => {
+    setSelected(i);
+    if (i === correct) setScore(score + 1);
+
+    setError(false);
+  };
+  const handleNext = () => {
+    if (currQues > 8) {
+      history.push("/result");
+    } else if (selected) {
+      setCurrQues(currQues + 1);
+      setQuestionNumber(questionNumber + 1);
+      setSelected();
+    } else setError("Please select an option first");
+  };
+
+  const handleQuit = () => {
+    setCurrQues(0);
+    setScore(0);
+    setQuestionNumber(1);
+  };
 
   const questionsMap = [
     { id: 1, question: "Question 1" },
@@ -47,17 +74,14 @@ function Game({ name, questions, score, setScore, setQuestions }) {
     { id: 8, question: "Question 8" },
     { id: 9, question: "Question 9" },
     { id: 10, question: "Question 10" },
-    { id: 11, question: "Question 11" },
-    { id: 12, question: "Question 12" },
-    { id: 13, question: "Question 13" },
-    { id: 14, question: "Question 14" },
-    { id: 15, question: "Question 15" },
   ].reverse();
 
   return (
     <div className="container gameContainer">
       <div className="gameQuestions">
-        <h1 className="subtitle">Welcome, {name}, your score: {score}</h1>
+        <h1 className="subtitle">
+          Welcome, {name}, your score: {score}
+        </h1>
         <div className="gameMode">
           Category: {questions[currQues].category}:
         </div>
@@ -65,6 +89,28 @@ function Game({ name, questions, score, setScore, setQuestions }) {
         <div className="gameQuestion btn-grad2">
           <h3> {questions[currQues].question}</h3>
         </div>
+        
+      </div>
+      <div className="gameButtons">
+      <Button
+            className="quitButton"
+            variant="contained"
+            color="secondary"
+            size="large"
+            style={{ width: 185 }}
+            href="/"
+            onClick={() => handleQuit()}
+          > Quit </Button>
+      <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            style={{ width: 185 }}
+            onClick={handleNext}
+          >
+            {currQues > 20 ? "Submit" : "Next Question"}
+          </Button>
+        
       </div>
       <div className="progressionMap">
         <ul className="questionMapItem">
@@ -79,14 +125,22 @@ function Game({ name, questions, score, setScore, setQuestions }) {
             >
               {m.question}
             </li>
-            
           ))}
         </ul>
-        
       </div>
       <div className="gameAnswers">
-       
-        {options && options.map((i) => <button className="btn-grad3" onClick={() => {}}>{i}</button>)}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        {options &&
+          options.map((i) => (
+            <button
+                className={`singleOption btn-grad3 ${selected && handleSelect(i)}`}
+                key={i}
+                onClick={() => handleCheck(i)}
+                disabled={selected}
+              >
+                {i}
+              </button>
+          ))}
       </div>
     </div>
   );

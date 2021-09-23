@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import { Button } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Game from "./game/Game";
 import "./play.scss";
 
-function Play({ name, questions, score, setScore, setQuestions }) {
 
 
-  const [currQues, setCurrQues] = useState(0);
+
+
+
+
+
+function Play({ name, questions, score, setScore, setQuestions,  }) {
+
+
+
   return (
     <Router>
       <Switch>
@@ -24,9 +31,14 @@ function Play({ name, questions, score, setScore, setQuestions }) {
             </section>
 
             <Link to="/game">
-              <button className="playButton" type="button">
+              <Button
+                variant="contained"
+                color="primary"
+                className="playButton"
+                type="button"
+              >
                 Start
-              </button>
+              </Button>
             </Link>
           </div>
         </Route>

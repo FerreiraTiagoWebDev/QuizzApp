@@ -28,7 +28,7 @@ function Mode({ name, setName, fetchQuestions }) {
     <div className="container modeContainer">
       <h1 className="modeTitle">Mode Selection</h1>
       <div className="modeSelect">
-        {error && <ErrorMessage/>}
+        {error && <ErrorMessage>Please Complete The Form</ErrorMessage>}
         <TextField
           style={{ marginBottom: 25 }}
           label="Enter Your Name"
@@ -45,7 +45,7 @@ function Mode({ name, setName, fetchQuestions }) {
         >
           {Categories.map((cat) => (
             <MenuItem key={cat.category} value={cat.value}>
-              {cat.category}
+              {cat.category} 
             </MenuItem>
           ))}
         </TextField>
