@@ -77,6 +77,15 @@ function Mode({ name, setName, fetchQuestions }) {
           Start Quiz
         </Button>
       </div>
+      <Button
+        variant="contained"
+        color="secondary"
+        size="large"
+        style={{ alignSelf: "center", marginTop: 20 }}
+        href="/"
+      >
+        Go to homepage
+      </Button>
     </div>
   );
 }

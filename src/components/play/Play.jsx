@@ -3,25 +3,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Game from "./game/Game";
 import "./play.scss";
 
-
-
-
-
-
-
-
-function Play({ name, questions, score, setScore, setQuestions,  }) {
-
-
-
+function Play({ name, questions, score, setScore, setQuestions }) {
   return (
     <Router>
       <Switch>
         <Route exact path="/play">
           <div className="container playContainer">
             <section>
-              <h1 className="playTitle">Welcome, {name} to the Coding Quizz</h1>
-              <h2 className="playTitle2">Category:  </h2>
+              <h1 className="playTitle">Welcome, {name} to the Quizz</h1>
+              <h2 className="playTitle2">Category: </h2>
             </section>
             <section>
               <div className="playIntro">

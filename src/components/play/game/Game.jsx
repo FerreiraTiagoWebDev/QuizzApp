@@ -1,10 +1,16 @@
 import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { Link, useHistory } from "react-router-dom";
 import ErrorMessage from "../../errorMessage/ErrorMessage";
 import "./game.scss";
 
-function Game({ name, questions, score, setScore, setQuestions }) {
+export default function Game({
+  name,
+  questions,
+  score,
+  setScore,
+  setQuestions,
+}) {
   const [options, setOptions] = useState();
   const [currQues, setCurrQues] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(1);
@@ -49,7 +55,8 @@ function Game({ name, questions, score, setScore, setQuestions }) {
   };
   const handleNext = () => {
     if (currQues > 8) {
-      history.push("/result");
+      // history.push("/");
+      alert("Thanks for Playing! Your Score is " + score);
     } else if (selected) {
       setCurrQues(currQues + 1);
       setQuestionNumber(questionNumber + 1);
@@ -58,6 +65,11 @@ function Game({ name, questions, score, setScore, setQuestions }) {
   };
 
   const handleQuit = () => {
+    setCurrQues(0);
+    setScore(0);
+    setQuestionNumber(1);
+  };
+  const handleRestart = () => {
     setCurrQues(0);
     setScore(0);
     setQuestionNumber(1);
@@ -89,27 +101,40 @@ function Game({ name, questions, score, setScore, setQuestions }) {
         <div className="gameQuestion btn-grad2">
           <h3> {questions[currQues].question}</h3>
         </div>
-        
       </div>
       <div className="gameButtons">
-      <Button
-            className="quitButton"
-            variant="contained"
-            color="secondary"
-            size="large"
-            style={{ width: 185 }}
-            href="/"
-            onClick={() => handleQuit()}
-          > Quit </Button>
-      <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            style={{ width: 185 }}
-            onClick={handleNext}
-          >
-            {currQues > 20 ? "Submit" : "Next Question"}
-          </Button>
+        <Button
+          className="quitButton"
+          variant="contained"
+          color="secondary"
+          size="large"
+          style={{ width: 185 }}
+          href="/"
+          onClick={() => handleQuit()}
+        >
+          {" "}
+          Quit{" "}
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          style={{ width: 185 }}
+          onClick={handleRestart}
+          disabled={currQues < 9}
+        >
+          Restart
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          style={{ width: 185 }}
+          onClick={handleNext}
+          // disabled={currQues == 9}
+        >
+          {currQues > 8 ? "Submit" : "Next Question"}
+        </Button>
         
       </div>
       <div className="progressionMap">
@@ -133,17 +158,17 @@ function Game({ name, questions, score, setScore, setQuestions }) {
         {options &&
           options.map((i) => (
             <button
-                className={`singleOption btn-grad3 ${selected && handleSelect(i)}`}
-                key={i}
-                onClick={() => handleCheck(i)}
-                disabled={selected}
-              >
-                {i}
-              </button>
+              className={`singleOption btn-grad3 ${
+                selected && handleSelect(i)
+              }`}
+              key={i}
+              onClick={() => handleCheck(i)}
+              disabled={selected}
+            >
+              {i}
+            </button>
           ))}
       </div>
     </div>
   );
 }
-
-export default Game;

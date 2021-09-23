@@ -19,17 +19,15 @@ function App() {
   const [questions, setQuestions] = useState("");
   const [score, setScore] = useState(0);
 
-
   const fetchQuestions = async (category = "", difficulty = "") => {
     const { data } = await axios.get(
-      `https://opentdb.com/api.php?amount=10${
+      `https://opentdb.com/api.php?amount=20${
         category && `&category=${category}`
       }${difficulty && `&difficulty=${difficulty}`}&type=multiple`
     );
     console.log(data);
     setQuestions(data.results);
   };
-
 
   return (
     <div className="GlobalApp">
@@ -62,7 +60,7 @@ function App() {
                 <Link to="/challenge">
                   <button className="challenge btn-grad">Challenge</button>
                 </Link>
-                <Link to="/materials">
+                <Link to="/result">
                   <button className="materials btn-grad">Materials</button>
                 </Link>
               </div>
@@ -75,7 +73,6 @@ function App() {
               score={score}
               setScore={setScore}
               setQuestions={setQuestions}
-              
             />
           </Route>
           <Route path="/mode">

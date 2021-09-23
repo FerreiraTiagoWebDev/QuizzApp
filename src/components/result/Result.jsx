@@ -1,21 +1,20 @@
 import { Button } from "@material-ui/core";
-import React, { useEffect } from "react";
-import { useHistory } from "react-router";
-import "./result.scss"
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import "./result.scss";
 
-function Result({ name, score }) {
-  const history = useHistory();
+const Result = ({ name, score }) => {
+  // const history = useHistory();
 
-  useEffect(() => {
-    if (!name) {
-      history.push("/");
-    }
-  }, [name, history]);
+  // useEffect(() => {
+  //   if (!name) {
+  //     history.push("/");
+  //   }
+  // }, [name, history]);
 
   return (
-    <div className="result">
+    <div className="container result">
       <span className="title">Final Score : {score}</span>
-
       <Button
         variant="contained"
         color="secondary"
@@ -23,10 +22,10 @@ function Result({ name, score }) {
         style={{ alignSelf: "center", marginTop: 20 }}
         href="/"
       >
-        Go to HomePage
+        Go to homepage
       </Button>
     </div>
   );
-}
+};
 
 export default Result;
