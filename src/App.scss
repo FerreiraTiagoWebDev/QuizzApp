@@ -24,7 +24,7 @@ a {
 }
 .logo {
   position: absolute;
-  top: 12vh;
+  top: 18vh;
 }
 
 .container {
@@ -45,16 +45,25 @@ a {
   justify-content: center;
   align-self: center;
   width: 80%;
-  margin-top: 15vh;
+  margin-top: 10vh;
+ 
 
   button {
     margin-bottom: 2vh;
+    font-size: 1.5vw;
+
+    @media (max-width: 900px) {
+      font-size: 2vw;
+    }
+    @media (max-width: 600px) {
+      font-size: 3vw;
+    }
   }
 }
 
 .btn-grad {
   background-image: linear-gradient(
-    to right,
+    to left,
     #003973 0%,
     #e5e5be 51%,
     #003973 100%
@@ -73,6 +82,7 @@ a {
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   display: block;
+
 }
 
 .btn-grad:hover {
@@ -83,7 +93,6 @@ a {
 }
 
 .play {
-  background-color: rgb(194, 157, 157);
   @include flex-center;
   @include border-radius;
   @include font-weight;

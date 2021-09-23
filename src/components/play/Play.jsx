@@ -10,7 +10,7 @@ function Play({ name, questions, score, setScore, setQuestions }) {
         <Route exact path="/play">
           <div className="container playContainer">
             <section>
-              <h1 className="playTitle">Welcome, {name} to the Quizz</h1>
+              <h1 className="playTitle">Welcome, {name} to the QuizZz</h1>
               <h2 className="playTitle2">Category: </h2>
             </section>
             <section>

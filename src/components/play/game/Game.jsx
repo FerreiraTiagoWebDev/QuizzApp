@@ -108,7 +108,7 @@ export default function Game({
           variant="contained"
           color="secondary"
           size="large"
-          style={{ width: 185 }}
+          style={{ width: 155 }}
           href="/"
           onClick={() => handleQuit()}
         >
@@ -119,7 +119,7 @@ export default function Game({
           variant="contained"
           color="secondary"
           size="large"
-          style={{ width: 185 }}
+          style={{ width: 155 }}
           onClick={handleRestart}
           disabled={currQues < 9}
         >

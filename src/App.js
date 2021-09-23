@@ -51,7 +51,7 @@ function App() {
                 <Link to="/mode">
                   <button className="mode btn-grad">Mode</button>
                 </Link>
-                <Link to="/settings">
+                {/* <Link to="/settings">
                   <button className="settings btn-grad">Settings</button>
                 </Link>
                 <Link to="/resources">
@@ -59,8 +59,8 @@ function App() {
                 </Link>
                 <Link to="/challenge">
                   <button className="challenge btn-grad">Challenge</button>
-                </Link>
-                <Link to="/result">
+                </Link> */}
+                <Link to="/materials">
                   <button className="materials btn-grad">Materials</button>
                 </Link>
               </div>

@@ -6,7 +6,7 @@ function Contact() {
     <div className="container contactContainer">
       <div>
         Creator:
-        <button style={{margin: "50px"}}>
+        <button className="btn-grad" style={{margin: "50px"}}>
           <a
             href="https://github.com/FerreiraTiagoWebDev"
             style={{ cursor: "pointer" }}
