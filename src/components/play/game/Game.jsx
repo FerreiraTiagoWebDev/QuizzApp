@@ -1,22 +1,16 @@
 import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import ErrorMessage from "../../errorMessage/ErrorMessage";
+import Timer from "../../Timer/Timer";
 import "./game.scss";
 
-export default function Game({
-  name,
-  questions,
-  score,
-  setScore,
-  setQuestions,
-}) {
+export default function Game({ name, questions, score, setScore }) {
   const [options, setOptions] = useState();
   const [currQues, setCurrQues] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(1);
   const [selected, setSelected] = useState();
+  const [gameOver, setGameOver] = useState(false);
 
-  const history = useHistory();
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -28,8 +22,6 @@ export default function Game({
         ])
     );
   }, [currQues, questions]);
-
-  console.log(options);
 
   const handleShuffle = (optionss) => {
     return optionss.sort(() => Math.random() - 0.5);
@@ -54,9 +46,9 @@ export default function Game({
     setError(false);
   };
   const handleNext = () => {
-    if (currQues > 8) {
-      // history.push("/");
-      alert("Thanks for Playing! Your Score is " + score);
+    if (questionNumber === 10 && selected) {
+      setQuestionNumber(questionNumber + 1);
+      setGameOver(true);
     } else if (selected) {
       setCurrQues(currQues + 1);
       setQuestionNumber(questionNumber + 1);
@@ -86,57 +78,101 @@ export default function Game({
     { id: 8, question: "Question 8" },
     { id: 9, question: "Question 9" },
     { id: 10, question: "Question 10" },
+    { id: 11, question: "Finish" },
   ].reverse();
+
+  function nextQuestionOnClickFire() {
+    handleNext();
+  }
 
   return (
     <div className="container gameContainer">
-      <div className="gameQuestions">
-        <h1 className="subtitle">
-          Welcome, {name}, your score: {score}
-        </h1>
-        <div className="gameMode">
-          Category: {questions[currQues].category}:
-        </div>
-        <div className="gameTimer">30s</div>
-        <div className="gameQuestion btn-grad2">
-          <h3> {questions[currQues].question}</h3>
-        </div>
-      </div>
-      <div className="gameButtons">
-        <Button
-          className="quitButton"
-          variant="contained"
-          color="secondary"
-          size="large"
-          style={{ width: 155 }}
-          href="/"
-          onClick={() => handleQuit()}
-        >
-          {" "}
-          Quit{" "}
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="large"
-          style={{ width: 155 }}
-          onClick={handleRestart}
-          disabled={currQues < 9}
-        >
-          Restart
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          style={{ width: 185 }}
-          onClick={handleNext}
-          // disabled={currQues == 9}
-        >
-          {currQues > 8 ? "Submit" : "Next Question"}
-        </Button>
-        
-      </div>
+      {gameOver ? (
+        <>
+          <div className="resultsContainer">
+            <h1>Thank you for playing {name}</h1>
+            <h2 className="">Category: {questions[0].category} </h2>
+            <h2 className="">Difficulty: {questions[0].difficulty} </h2>
+            <div classname="gameOverResult">Your score: <span>{score}</span> </div>
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              style={{ width: 155 }}
+              onClick={handleRestart}
+              href="/mode"
+              className="buttonResults"
+            >
+              Restart
+            </Button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="gameQuestions">
+            <h1 className="subtitle">
+              Welcome, {name}, your score: {score}
+            </h1>
+            <div className="gameMode">
+              Category: {questions[currQues].category}:
+            </div>
+            <div className="gameTimer">
+              <Timer
+                setGameOver={setGameOver}
+                score={score}
+                questionNumber={questionNumber}
+                setError={setError}
+              />
+            </div>
+            <div className="gameQuestion btn-grad2">
+              <h3> {questions[currQues].question}</h3>
+            </div>
+          </div>
+          <div className="gameButtons">
+            <Button
+              className="quitButton"
+              variant="contained"
+              color="secondary"
+              size="large"
+              style={{ width: 155 }}
+              href="/"
+              onClick={() => handleQuit()}
+            >
+              {" "}
+              Quit{" "}
+            </Button>
+
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              style={{ width: 185 }}
+              onClick={nextQuestionOnClickFire}
+
+              // disabled={currQues == 9}
+            >
+              {currQues > 8 ? "Submit" : "Next Question"}
+            </Button>
+          </div>
+
+          <div className="gameAnswers">
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+            {options &&
+              options.map((i) => (
+                <button
+                  className={`singleOption btn-grad3 ${
+                    selected && handleSelect(i)
+                  }`}
+                  key={i}
+                  onClick={() => handleCheck(i)}
+                  disabled={selected}
+                >
+                  {i}
+                </button>
+              ))}
+          </div>
+        </>
+      )}
       <div className="progressionMap">
         <ul className="questionMapItem">
           {questionsMap.map((m) => (
@@ -152,22 +188,6 @@ export default function Game({
             </li>
           ))}
         </ul>
-      </div>
-      <div className="gameAnswers">
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        {options &&
-          options.map((i) => (
-            <button
-              className={`singleOption btn-grad3 ${
-                selected && handleSelect(i)
-              }`}
-              key={i}
-              onClick={() => handleCheck(i)}
-              disabled={selected}
-            >
-              {i}
-            </button>
-          ))}
       </div>
     </div>
   );

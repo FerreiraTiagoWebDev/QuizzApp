@@ -7,6 +7,34 @@
   position: relative;
 }
 
+
+.resultsContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+  h1 {
+    margin-bottom: 3vh;
+    font-size: 4vw;
+  }
+  h2{
+    margin-bottom: 3vh;
+    font-size: 2.5vw;
+  }
+  .buttonResults {
+    margin-top: 5vh;
+  }
+  .gameOverResult{
+
+    span {
+      background-color: black;
+    }
+  }
+}
+
+
 .gameQuestions {
   grid-column: 1/2;
   background-color: rgba($color: #0d0c4d, $alpha: 0.2);

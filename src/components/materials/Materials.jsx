@@ -2,14 +2,21 @@ import React from "react";
 import "./materials.scss";
 
 function Materials() {
+
+
+
   return (
     <div className="container materialsContainer">
       <div>
-        {" "}
+
         MATERIALS COMPONENT
         <ul>
           <li>
-            <a href="https://roadmap.sh/frontend" target="_blank" rel="noreferrer">
+            <a
+              href="https://roadmap.sh/frontend"
+              target="_blank"
+              rel="noreferrer"
+            >
               RoadMap to Becoming a FrontEnd Developer
             </a>
           </li>

@@ -18,6 +18,8 @@ function App() {
   const [name, setName] = useState("");
   const [questions, setQuestions] = useState("");
   const [score, setScore] = useState(0);
+  const [difficulty, setDifficulty] = useState("");
+  const [category, setCategory] = useState("");
 
   const fetchQuestions = async (category = "", difficulty = "") => {
     const { data } = await axios.get(
@@ -27,8 +29,9 @@ function App() {
     );
     console.log(data);
     setQuestions(data.results);
+    setCategory(data.results.category);
+    setDifficulty(data.results.difficulty);
   };
-
   return (
     <div className="GlobalApp">
       <Router>
@@ -73,6 +76,8 @@ function App() {
               score={score}
               setScore={setScore}
               setQuestions={setQuestions}
+              difficulty={difficulty}
+              category={category}
             />
           </Route>
           <Route path="/mode">

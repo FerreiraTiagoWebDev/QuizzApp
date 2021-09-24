@@ -5,13 +5,16 @@ import Categories from "../../Data/Categories";
 import { useHistory } from "react-router";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
+
+
+
 function Mode({ name, setName, fetchQuestions }) {
   const [category, setCategory] = useState("");
-  const [difficulty, setDifficulty] = useState("");
+   const [difficulty, setDifficulty] = useState("");
   const [error, setError] = useState(false);
 
   const history = useHistory();
-
+  
   const handleSubmit = () => {
     if (!category || !difficulty || !name) {
       setError(true);
