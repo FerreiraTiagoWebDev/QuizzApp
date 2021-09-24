@@ -12,7 +12,7 @@ export default function Timer({ setGameOver, questionNumber }) {
   }, [timer, setGameOver]);
 
   useEffect(() => {
-    setTimer(30);
+    setTimer(100000);
   }, [questionNumber]);
   return timer;
 }

@@ -100,7 +100,7 @@ export default function Game({ name, questions, score, setScore }) {
               size="large"
               style={{ width: 155 }}
               onClick={handleRestart}
-              href="/mode"
+              href="/"
               className="buttonResults"
             >
               Restart
