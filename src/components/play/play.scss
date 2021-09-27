@@ -1,24 +1,80 @@
 @import "../../global.scss";
 
 .playContainer {
-    @include flex-center;
-    flex-direction: column;
+  @include flex-center;
+  flex-direction: column;
+  margin: 0 auto;
+
+  #playStartButton {
+    width: 30vh;
+    transition: 0.3s ease;
+    padding: 3vh 3vh;
+    background: #003973; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #0b8793,
+      #003973
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #0b8793,
+      #003973
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    &:hover {
+      transform: scale(1.1);
+      letter-spacing: 2px;
+
+    }
+  }
 }
 
-.playTitle {
-    margin-top: 10vh;
+.title1 {
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  padding: 4vw;
+  border-radius: 50px;
+  font-size: 2.5vw;
+  span {
+    color: crimson;
+  }
+  @media (max-width: 900px) {
+    font-size: 3vw;
+  }
+  @media (max-width: 600px) {
+    font-size: 3.5vw;
+  }
 }
 
-.playTitle2 {
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    text-transform: capitalize;
+.description1 {
+  margin-top: 8vh;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-direction: column;
 }
 .playIntro {
-    margin-bottom: 10vh;
+  margin-bottom: 5vh;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  padding: 4vw;
+  font-size: 2vw;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  border-radius: 50px;
+  p {
+    margin-top: 3vh;
+  }
+  span {
+    color: crimson;
+  }
+  @media (max-width: 900px) {
+    font-size: 2.5vw;
+  }
+  @media (max-width: 600px) {
+    font-size: 3vw;
+  }
 }
 
 .playButton {
-    width: 100px;
-    height: 50px;
-} 
+  width: 100px;
+  height: 50px;
+}

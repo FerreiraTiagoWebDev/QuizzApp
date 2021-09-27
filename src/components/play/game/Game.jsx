@@ -90,10 +90,12 @@ export default function Game({ name, questions, score, setScore }) {
       {gameOver ? (
         <>
           <div className="resultsContainer">
-            <h1>Thank you for playing {name}</h1>
+            <h1>Thank you for playing <span>{name}</span></h1>
             <h2 className="">Category: {questions[0].category} </h2>
             <h2 className="">Difficulty: {questions[0].difficulty} </h2>
-            <div classname="gameOverResult">Your score: <span>{score}</span> </div>
+            <div classname="gameOverResult">
+              <p>Your score: <span>{score}</span></p>
+            </div>
             <Button
               variant="contained"
               color="secondary"
@@ -102,8 +104,9 @@ export default function Game({ name, questions, score, setScore }) {
               onClick={handleRestart}
               href="/"
               className="buttonResults"
+              id="changeColor"
             >
-              Restart
+              <p>Restart</p>
             </Button>
           </div>
         </>
@@ -111,20 +114,10 @@ export default function Game({ name, questions, score, setScore }) {
         <>
           <div className="gameQuestions">
             <h1 className="subtitle">
-              Welcome, {name}, your score: {score}
+              Welcome, <span>{name}</span>, your score: <span>{score}</span>
             </h1>
-            <div className="gameMode">
-              Category: {questions[currQues].category}:
-            </div>
-            <div className="gameTimer">
-              <Timer
-                setGameOver={setGameOver}
-                score={score}
-                questionNumber={questionNumber}
-                setError={setError}
-              />
-            </div>
-            <div className="gameQuestion btn-grad2">
+
+            <div className="gameQuestion">
               <h3> {questions[currQues].question}</h3>
             </div>
           </div>
@@ -160,7 +153,7 @@ export default function Game({ name, questions, score, setScore }) {
             {options &&
               options.map((i) => (
                 <button
-                  className={`singleOption btn-grad3 ${
+                  className={`singleOption ${
                     selected && handleSelect(i)
                   }`}
                   key={i}
@@ -174,6 +167,21 @@ export default function Game({ name, questions, score, setScore }) {
         </>
       )}
       <div className="progressionMap">
+        <div className="gameTimer">
+          <p>Time left:</p>
+          <p><span> <Timer
+            setGameOver={setGameOver}
+            score={score}
+            selected={selected}
+            questionNumber={questionNumber}
+            setError={setError}
+          /></span>s</p>
+        </div>
+        <div className="gameMode">
+          <p>
+            Category: <span>{questions[currQues].category}</span>
+          </p>
+        </div>
         <ul className="questionMapItem">
           {questionsMap.map((m) => (
             <li

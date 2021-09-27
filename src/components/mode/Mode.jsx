@@ -33,15 +33,20 @@ function Mode({ name, setName, fetchQuestions }) {
       <div className="modeSelect">
         {error && <ErrorMessage>Please Complete The Form</ErrorMessage>}
         <TextField
+          InputProps = {{
+            style: {
+              fontSize: 20,
+            },
+          }}
           style={{ marginBottom: 25 }}
-          label="Enter Your Name"
+          label="Your Name"
           variant="outlined"
           onChange={(e) => setName(e.target.value)}
         />
         <TextField
           select
           style={{ marginBottom: 25 }}
-          label="Select Category"
+          label="Category"
           variant="outlined"
           onChange={(e) => setCategory(e.target.value)}
           value={category}
@@ -55,7 +60,7 @@ function Mode({ name, setName, fetchQuestions }) {
 
         <TextField
           select
-          label="SelectDifficulty"
+          label="Difficulty"
           variant="outlined"
           style={{ marginBottom: 30 }}
           onChange={(e) => setDifficulty(e.target.value)}
@@ -76,6 +81,7 @@ function Mode({ name, setName, fetchQuestions }) {
           color="primary"
           size="large"
           onClick={handleSubmit}
+          id="modeButtonStartQuiz"
         >
           Start Quiz
         </Button>
@@ -86,6 +92,7 @@ function Mode({ name, setName, fetchQuestions }) {
         size="large"
         style={{ alignSelf: "center", marginTop: 20 }}
         href="/"
+        id="modeButtonHomepage"
       >
         Go to homepage
       </Button>

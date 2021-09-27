@@ -1,26 +1,52 @@
-
 .modeContainer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .modeTitle {
-    margin: 5vw 5vh 5vw 5vh;
-    font-size: 1.5rem;
-    margin: 0 auto;
-    margin-top: 5vh;
+  font-size: 2rem;
+  margin: 0 auto;
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modeSelect {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 5vh;
-    flex-direction: column;
-    padding: 30px;
-    width: 70%;
-    background-color: rgba($color: #ffffff, $alpha: 0.6);
-    border-radius: 40px;
-    
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+  flex-direction: column;
+  padding: 30px;
+  width: 70%;
+  background-color: rgba($color: #ffffff, $alpha: 0.6);
+  border-radius: 40px;
+
+  #modeButtonStartQuiz {
+      transition: 0.3s ease-in;
+    background: #003973; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #0b8793,
+      #003973
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #0b8793,
+      #003973
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    &:hover {
+        transform: scale(1.05);
+        letter-spacing: 2px;
+        
+  
+      }
+  }
+  
+  
+}
+#modeButtonHomepage {
+    background-color: crimson;
 }
