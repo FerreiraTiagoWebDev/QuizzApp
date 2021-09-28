@@ -9,21 +9,11 @@
     width: 30vh;
     transition: 0.3s ease;
     padding: 3vh 3vh;
-    background: #003973; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #0b8793,
-      #003973
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #0b8793,
-      #003973
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transition: 0.3s ease-in;
+    background: #4676cc;
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       letter-spacing: 2px;
-
     }
   }
 }

@@ -8,8 +8,8 @@ function Materials() {
   return (
     <div className="container materialsContainer">
       <div>
-
-        MATERIALS COMPONENT
+        <h1>MATERIALS COMPONENT</h1>
+        <h3> Interested in coding? Here you can find some resources!</h3>
         <ul>
           <li>
             <a

@@ -1,7 +1,7 @@
 .navbar {
   width: 75vw;
   height: 8vh;
-  background-color: rgba($color: #003973, $alpha: 0.6);
+  background-color: rgba($color: #4676cc, $alpha: 0.6);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -44,7 +44,7 @@
   }
 }
 .navlinks a li:hover {
-  color:crimson;
+  color:#e5e5be;
   transform:scale(1.1);
 }
 

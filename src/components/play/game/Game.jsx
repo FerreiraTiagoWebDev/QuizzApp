@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ErrorMessage from "../../errorMessage/ErrorMessage";
 import Timer from "../../Timer/Timer";
 import "./game.scss";
+import "./button.scss";
 
 export default function Game({ name, questions, score, setScore }) {
   const [options, setOptions] = useState();
@@ -41,9 +42,15 @@ export default function Game({ name, questions, score, setScore }) {
 
   const handleCheck = (i) => {
     setSelected(i);
-    if (i === correct) setScore(score + 1);
-
     setError(false);
+    if (i === correct) {
+      const handle = setTimeout(() => {
+        setScore(score + 1);
+        setError(false);
+        clearTimeout(handle);
+      }, 2000);
+    }
+    
   };
   const handleNext = () => {
     if (questionNumber === 10 && selected) {
@@ -68,16 +75,16 @@ export default function Game({ name, questions, score, setScore }) {
   };
 
   const questionsMap = [
-    { id: 1, question: "Question 1" },
-    { id: 2, question: "Question 2" },
-    { id: 3, question: "Question 3" },
-    { id: 4, question: "Question 4" },
-    { id: 5, question: "Question 5" },
-    { id: 6, question: "Question 6" },
-    { id: 7, question: "Question 7" },
-    { id: 8, question: "Question 8" },
-    { id: 9, question: "Question 9" },
-    { id: 10, question: "Question 10" },
+    { id: 1, question: "1/10" },
+    { id: 2, question: "2/10" },
+    { id: 3, question: "3/10" },
+    { id: 4, question: "4/10" },
+    { id: 5, question: "5/10" },
+    { id: 6, question: "6/10" },
+    { id: 7, question: "7/10" },
+    { id: 8, question: "8/10" },
+    { id: 9, question: "9/10" },
+    { id: 10, question: "10/10" },
     { id: 11, question: "Finish" },
   ].reverse();
 
@@ -90,11 +97,15 @@ export default function Game({ name, questions, score, setScore }) {
       {gameOver ? (
         <>
           <div className="resultsContainer">
-            <h1>Thank you for playing <span>{name}</span></h1>
+            <h1>
+              Thank you for playing <span>{name}</span>
+            </h1>
             <h2 className="">Category: {questions[0].category} </h2>
             <h2 className="">Difficulty: {questions[0].difficulty} </h2>
             <div classname="gameOverResult">
-              <p>Your score: <span>{score}</span></p>
+              <p>
+                Your score: <span>{score}</span>
+              </p>
             </div>
             <Button
               variant="contained"
@@ -112,30 +123,19 @@ export default function Game({ name, questions, score, setScore }) {
         </>
       ) : (
         <>
-          <div className="gameQuestions">
+          <div className="subtitle">
             <h1 className="subtitle">
               Welcome, <span>{name}</span>, your score: <span>{score}</span>
             </h1>
-
+          </div>
+          <div className="gameQuestions">
             <div className="gameQuestion">
               <h3> {questions[currQues].question}</h3>
             </div>
           </div>
-          <div className="gameButtons">
+          <div className="gameButtonNext">
             <Button
-              className="quitButton"
-              variant="contained"
-              color="secondary"
-              size="large"
-              style={{ width: 155 }}
-              href="/"
-              onClick={() => handleQuit()}
-            >
-              {" "}
-              Quit{" "}
-            </Button>
-
-            <Button
+              id="gameNextQuestion1"
               variant="contained"
               color="primary"
               size="large"
@@ -147,15 +147,12 @@ export default function Game({ name, questions, score, setScore }) {
               {currQues > 8 ? "Submit" : "Next Question"}
             </Button>
           </div>
-
           <div className="gameAnswers">
             {error && <ErrorMessage>{error}</ErrorMessage>}
             {options &&
               options.map((i) => (
                 <button
-                  className={`singleOption ${
-                    selected && handleSelect(i)
-                  }`}
+                  className={`buttonAnswer ${selected && handleSelect(i)}`}
                   key={i}
                   onClick={() => handleCheck(i)}
                   disabled={selected}
@@ -166,36 +163,57 @@ export default function Game({ name, questions, score, setScore }) {
           </div>
         </>
       )}
+      <div className="gameButtonQuit">
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          style={{ width: 155 }}
+          href="/"
+          onClick={() => handleQuit()}
+          id="gameQuitButton1"
+        >
+          {" "}
+          Quit{" "}
+        </Button>
+      </div>
       <div className="progressionMap">
-        <div className="gameTimer">
-          <p>Time left:</p>
-          <p><span> <Timer
-            setGameOver={setGameOver}
-            score={score}
-            selected={selected}
-            questionNumber={questionNumber}
-            setError={setError}
-          /></span>s</p>
-        </div>
         <div className="gameMode">
           <p>
             Category: <span>{questions[currQues].category}</span>
           </p>
         </div>
-        <ul className="questionMapItem">
+
+        <div className="questionMapItem">
           {questionsMap.map((m) => (
-            <li
+            <div
               key={m.id}
               className={
                 questionNumber === m.id
-                  ? "questionMapItem active"
-                  : "questionMapItem"
+                  ? "questionMapItem active btn btn--stripe"
+                  : "questionMapItem "
               }
             >
               {m.question}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
+        <div className="gameTimer">
+          <p>Time left:</p>
+          <p>
+            <span>
+              {" "}
+              <Timer
+                setGameOver={setGameOver}
+                score={score}
+                selected={selected}
+                questionNumber={questionNumber}
+                setError={setError}
+              />
+            </span>
+            s
+          </p>
+        </div>
       </div>
     </div>
   );
