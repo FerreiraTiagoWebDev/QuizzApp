@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import ErrorMessage from "../../errorMessage/ErrorMessage";
 import Timer from "../../Timer/Timer";
 import "./game.scss";
-import "./button.scss";
 
 export default function Game({ name, questions, score, setScore }) {
   const [options, setOptions] = useState();
@@ -50,7 +49,6 @@ export default function Game({ name, questions, score, setScore }) {
         clearTimeout(handle);
       }, 2000);
     }
-    
   };
   const handleNext = () => {
     if (questionNumber === 10 && selected) {
@@ -100,11 +98,15 @@ export default function Game({ name, questions, score, setScore }) {
             <h1>
               Thank you for playing <span>{name}</span>
             </h1>
-            <h2 className="">Category: {questions[0].category} </h2>
-            <h2 className="">Difficulty: {questions[0].difficulty} </h2>
+            <h2 className="">
+              Category: <span>{questions[0].category}</span>
+            </h2>
+            <h2 className="">
+              Difficulty: <span>{questions[0].difficulty} </span>
+            </h2>
             <div classname="gameOverResult">
               <p>
-                Your score: <span>{score}</span>
+                Your score: <span>{score}</span>/10
               </p>
             </div>
             <Button
@@ -113,7 +115,7 @@ export default function Game({ name, questions, score, setScore }) {
               size="large"
               style={{ width: 155 }}
               onClick={handleRestart}
-              href="/"
+              href="/mode"
               className="buttonResults"
               id="changeColor"
             >
@@ -124,9 +126,12 @@ export default function Game({ name, questions, score, setScore }) {
       ) : (
         <>
           <div className="subtitle">
-            <h1 className="subtitle">
+            <h1>
               Welcome, <span>{name}</span>, your score: <span>{score}</span>
             </h1>
+            <p>
+              Category: <span>{questions[currQues].category}</span>
+            </p>
           </div>
           <div className="gameQuestions">
             <div className="gameQuestion">
@@ -138,14 +143,26 @@ export default function Game({ name, questions, score, setScore }) {
               id="gameNextQuestion1"
               variant="contained"
               color="primary"
-              size="large"
-              style={{ width: 185 }}
               onClick={nextQuestionOnClickFire}
 
               // disabled={currQues == 9}
             >
               {currQues > 8 ? "Submit" : "Next Question"}
             </Button>
+          </div>
+          <div className="gameTimerContainer">
+            <div className="gameTimer">
+              <span>
+                {" "}
+                <Timer
+                  setGameOver={setGameOver}
+                  score={score}
+                  selected={selected}
+                  questionNumber={questionNumber}
+                  setError={setError}
+                />
+              </span>
+            </div>
           </div>
           <div className="gameAnswers">
             {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -177,14 +194,9 @@ export default function Game({ name, questions, score, setScore }) {
           Quit{" "}
         </Button>
       </div>
-      <div className="progressionMap">
-        <div className="gameMode">
-          <p>
-            Category: <span>{questions[currQues].category}</span>
-          </p>
-        </div>
 
-        <div className="questionMapItem">
+      <div className="progressionMap">
+        <div className="questionMapItem items">
           {questionsMap.map((m) => (
             <div
               key={m.id}
@@ -197,22 +209,6 @@ export default function Game({ name, questions, score, setScore }) {
               {m.question}
             </div>
           ))}
-        </div>
-        <div className="gameTimer">
-          <p>Time left:</p>
-          <p>
-            <span>
-              {" "}
-              <Timer
-                setGameOver={setGameOver}
-                score={score}
-                selected={selected}
-                questionNumber={questionNumber}
-                setError={setError}
-              />
-            </span>
-            s
-          </p>
         </div>
       </div>
     </div>

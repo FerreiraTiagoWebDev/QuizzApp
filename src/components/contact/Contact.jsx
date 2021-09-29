@@ -8,7 +8,7 @@ function Contact() {
         Creator:
         <button className="btn-grad" style={{margin: "50px"}}>
           <a
-            href="https://github.com/FerreiraTiagoWebDev"
+            href="https://portfolio-695c2.web.app/"
             style={{ cursor: "pointer" }}
             target="_blank"
             rel="noopener noreferrer"

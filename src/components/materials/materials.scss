@@ -1,7 +1,102 @@
 @import "../../global.scss";
 
 .materialsContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titleMaterials {
+  margin-bottom: 5vh;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  padding: 40px;
+  border-radius: 50px;
+  
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 400px) {
+    padding: 20px;
+    margin-bottom: 1vh;
+  }
+
+  h1 {
+    font-size: 3vw;
+    @media (max-width: 900px) {
+      font-size: 3.5vw;
+    }
+    @media (max-width: 475px) {
+        font-size: 5vw;
+      }
+  }
+}
+
+.linksMaterials {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin-bottom: 2vh;
+  border-radius: 50px;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  
+  @media (max-width: 400px) {
+    padding: 10px;
+    margin-bottom: 1vh;
+    font-size: 1vw;    
+}
+
+  li {
+    margin-bottom: 2vh;
+    font-size: 2vh;
+  }
+  h2 {
+    margin-bottom: 2vh;
+    @media (max-width: 400px) {
+        font-size: 3vw;    
+    }
+  }
+  h3 {
+    font-size: 2.5vw;
+    margin-top: 2vh;
+    margin-bottom: 6vh;
+    @media (max-width: 900px) {
+      font-size: 3vw;
+    }
+  }
+
+  button {
+    padding: 20px;
+    width: 40vw;
+    height: auto;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    color: white;
+    word-spacing: 1px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+
+    @media (max-width: 400px) {
+        font-size: 3vw;    
+    }
+
+    background-image: linear-gradient(
+      to left,
+      #e5e5be 0%,
+      #4676cc 0%,
+      #4676cc 90%,
+      #e5e5be 100%
+    );
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+      transform: scale(1.05);
+      background-position: right center;
+    }
+  }
 }
