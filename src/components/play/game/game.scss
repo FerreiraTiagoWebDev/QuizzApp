@@ -14,36 +14,57 @@
   justify-content: center;
   flex-direction: column;
   margin: 0 auto;
-  grid-column: 1/3;
+  grid-column: 1/4;
   grid-row: 1/6;
+  @media (max-width: 900px) {
+    font-size: 3.5vw;
+  }
+  @media (max-width: 600px) {
+    font-size: 4.5vw;
+  }
 
   h1 {
     margin-bottom: 3vh;
-    font-size: 4vw;
+    font-size: 3vw;
     span {
-      color: #f50057;
+      color: crimson;
+    }
+    @media (max-width: 600px) {
+      font-size: 5.5vw;
     }
   }
 
   h2 {
     margin-bottom: 3vh;
-    font-size: 2.5vw;
+    font-size: 2vw;
     text-transform: capitalize;
     span {
-      color: #f50057;
+      color: crimson;
     }
-    
+    @media (max-width: 600px) {
+      font-size: 3.5vw;
+    }
   }
   .buttonResults {
     margin-top: 5vh;
     color: white;
-    
   }
   p {
-    
     span {
-      color: #f50057;
-      font-size: 4vw;
+      color: crimson;
+      font-size: 3vw;
+      @media (max-width: 900px) {
+        font-size: 4vw;
+      }
+      @media (max-width: 600px) {
+        font-size: 5vw;
+      }
+    }
+  }
+  #gameRestartButton {
+    background-color: crimson;
+    &:hover {
+      transform: scale(1.05);
     }
   }
 }
@@ -57,12 +78,25 @@
   flex-direction: column;
   h1 {
     margin-top: 1vh;
+    @media (max-width: 900px) {
+      font-size: 2.5vw;
+    }
+    @media (max-width: 600px) {
+      font-size: 3.5vw;
+    }
   }
   span {
     color: #f50057;
   }
   p {
     margin-top: 1vh;
+    font-size: 1.5vw;
+    @media (max-width: 900px) {
+      font-size: 2vw;
+    }
+    @media (max-width: 600px) {
+      font-size: 2.75vw;
+    }
   }
 }
 
@@ -75,6 +109,8 @@
   flex-direction: column;
   margin-left: 3vw;
   padding: 10px 10px;
+  font-size: 1.25vw;
+  text-align: justify;
 
   .gameQuestion {
     width: 45vw;
@@ -93,15 +129,19 @@
       rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
       rgba(0, 0, 0, 0.09) 0px 32px 16px;
     color: black;
-    background-image: url(../../../assets/questions.png), linear-gradient(
-      to right,
-      #4675ccd0 0%,
-      #e5e5bede 50%,
-      #4675ccd0 100%
-    );
-    
+    background-image: url(../../../assets/questions.png),
+      linear-gradient(to right, #4675ccd0 0%, #e5e5bede 50%, #4675ccd0 100%);
     background-size: cover;
     background-position: 50% 50%;
+
+    @media (max-width: 900px) {
+      width: 40vw;
+      font-size: 1.75vw;
+    }
+    @media (max-width: 600px) {
+      width: 53vw;
+      font-size: 2.2vw;
+    }
   }
 }
 .gameTimerContainer {
@@ -111,20 +151,49 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  
+  @media (max-width: 900px) {
+    justify-content: flex-start;
+    margin-top: 7.5vh;
+    margin-right: 2vh;
+  }
+  @media (max-width: 600px) {
+    font-size: 4vw;
+    grid-column: 1/2;
+    grid-row: 3/4;
+    margin-top: 0vh;
+    margin-right: 0vh;
+  }
 
   .gameTimer {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     border-radius: 50%;
     padding: 20px;
-    background: rgba(70, 118, 204, 0.6);
+    background-color: #e5e5befb;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     width: 7.5vw;
     margin-right: 1vw;
+    @media (max-width: 600px) {
+      width: 10.5vw;
+      font-size: 5vw;
+      margin-right: -5vw;
+    }
     span {
       font-size: 2vw;
       color: crimson;
+      @media (max-width: 900px) {
+        width: 10.5vw;
+        font-size: 4vw;
+      }
+      @media (max-width: 600px) {
+        width: 10.5vw;
+        font-size: 5vw;
+      }
     }
   }
 }
@@ -132,23 +201,24 @@
 .progressionMap {
   grid-column: 3/4;
   grid-row: 2/5;
-  height: 75vh;
+  height: 72.5vh;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 15vw;
   color: white;
+  margin-top: 1vh;
 
   .items {
-    background-image: url(../../../assets/questions.png), linear-gradient(
-      to right,
-      #4675ccd0 0%,
-      #e5e5bede 20%,
-      #e5e5bede 80%,
-      #4675ccd0 100%
-    );
+    background-image: url(../../../assets/questions.png),
+      linear-gradient(
+        to right,
+        #4675ccd0 0%,
+        #e5e5bea4 20%,
+        #e5e5bea4 80%,
+        #4675ccd0 100%
+      );
   }
-
 
   .questionMapItem {
     height: 100%;
@@ -163,12 +233,22 @@
     background-color: #4675ccd0;
     margin: 5px 5px;
     padding: 0.5vw;
+    font-size: 1.4vw;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
       rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
       rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
       rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
       rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
       rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+    @media (max-width: 900px) {
+      font-size: 2vw;
+      width: 70%;
+    }
+    @media (max-width: 600px) {
+      font-size: 2.75vw;
+      width: 75%;
+    }
   }
 
   .questionMapItem.active {
@@ -178,13 +258,13 @@
     background: crimson;
     margin: 5px 5px;
     padding: 1vw;
-    font-size: 1.4rem;
+    font-size: 1.5vw;
 
     @media (max-width: 900px) {
-      font-size: 1.5w;
+      font-size: 2.5vw;
     }
     @media (max-width: 650px) {
-      font-size: 1.5vw;
+      font-size: 3vw;
     }
   }
 }
@@ -197,11 +277,31 @@
 }
 .gameButtonNext {
   grid-column: 2/3;
-  grid-row: 2/3;
+  grid-row: 3/4;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: flex-end;
-  flex-direction: column; 
+  flex-direction: column;
+
+  @media (max-width: 900px) {
+    font-size: 2.5vw;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    justify-content: flex-end;
+    margin-bottom: 7.5vh;
+    margin-right: 1.55vw;
+  }
+  @media (max-width: 600px) {
+    font-size: 5vw;
+    grid-column: 1/2;
+    grid-row: 3/4;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 13vw;
+    margin-top: 1vh;
+  }
 }
 .gameAnswers {
   grid-column: 1/3;
@@ -214,8 +314,12 @@
   padding: 10px;
   color: white;
 
+  @media (max-width: 600px) {
+    margin-top: 7vh;
+  }
+
   button {
-    width: 55.5vw;
+    width: 45.5vw;
     height: 6.5vh;
     border-radius: 40px;
     text-transform: capitalize;
@@ -231,6 +335,14 @@
 
     &:hover {
       background-color: #e5e5bede;
+    }
+    @media (max-width: 900px) {
+      width: 55.5vw;
+      font-size: 1.75vw;
+    }
+    @media (max-width: 600px) {
+      width: 53vw;
+      font-size: 1.75vw;
     }
   }
 }
@@ -250,65 +362,82 @@
 
 @keyframes wrongAnswer {
   0% {
-    background-color: #4676cc;
-    border: #4676cc;
+    background-color: #4675ccd0;
+    
   }
-  20.0% {
-    background-color: #4676cc;
-    border: #4676cc;
+  20% {
+    background-color: #4675ccd0;
+    
   }
-  50.0% {
-    background-color: #4676cc;
-    border: #4676cc;
+  50% {
+    background-color: #4675ccd0;
+    
   }
-  50.0% {
-    background-color: #4676cc;
-    border: #4676cc;
+  50% {
+    background-color: #4675ccd0;
+    
   }
-  100.0% {
+  100% {
     background-color: crimson;
-    border: crimson;
+  
   }
 }
 @keyframes correctAnswer {
   0% {
-    background-color: #4676cc;
-    border: #4676cc;
+    background-color: #4675ccd0;
+    
   }
-  20.0% {
-    background-color: #4676cc;
-    border: #4676cc;
+  20% {
+    background-color: #4675ccd0;
+    
   }
-  50.0% {
-    background-color: #4676cc;
-    border: #4676cc;
+  50% {
+    background-color: #4675ccd0;
+    
   }
-  50.0% {
-    background-color: #4676cc;
-    border: #4676cc;
+  50% {
+    background-color: #4675ccd0;
+    
   }
-  100.0% {
+  100% {
     background-color: #b2df76;
-    border: #b2df76;
+  
   }
 }
 #gameQuitButton1 {
   background-color: rgba(220, 20, 60, 0.747);
-  
+  @media (max-width: 900px) {
+    margin-right: 2vw;
+  }
 
   &:hover {
     background-color: crimson;
   }
 }
 #gameNextQuestion1 {
-  background-color: #e5e5bede;
+  background-color: #b2df76;
   color: black;
   font-size: 1vw;
   width: 7vw;
   margin-right: 1vw;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
   &:hover {
     background-color: #e5e5befb;
     transform: scale(1.05);
+  }
+
+  @media (max-width: 900px) {
+    font-size: 1.5vw;
+    width: 10vw;
+    margin-right: 0vw;
+  }
+  @media (max-width: 600px) {
+    font-size: 2vw;
+    width: 13.5vw;
   }
 }

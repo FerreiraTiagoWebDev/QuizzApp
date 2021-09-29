@@ -104,7 +104,7 @@ export default function Game({ name, questions, score, setScore }) {
             <h2 className="">
               Difficulty: <span>{questions[0].difficulty} </span>
             </h2>
-            <div classname="gameOverResult">
+            <div className="gameOverResult">
               <p>
                 Your score: <span>{score}</span>/10
               </p>
@@ -117,7 +117,7 @@ export default function Game({ name, questions, score, setScore }) {
               onClick={handleRestart}
               href="/mode"
               className="buttonResults"
-              id="changeColor"
+              id="gameRestartButton"
             >
               <p>Restart</p>
             </Button>
@@ -178,39 +178,38 @@ export default function Game({ name, questions, score, setScore }) {
                 </button>
               ))}
           </div>
+          <div className="progressionMap">
+            <div className="questionMapItem items">
+              {questionsMap.map((m) => (
+                <div
+                  key={m.id}
+                  className={
+                    questionNumber === m.id
+                      ? "questionMapItem active btn btn--stripe"
+                      : "questionMapItem "
+                  }
+                >
+                  {m.question}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="gameButtonQuit">
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              style={{ width: 155 }}
+              href="/"
+              onClick={() => handleQuit()}
+              id="gameQuitButton1"
+            >
+              {" "}
+              Quit{" "}
+            </Button>
+          </div>
         </>
       )}
-      <div className="gameButtonQuit">
-        <Button
-          variant="contained"
-          color="secondary"
-          size="large"
-          style={{ width: 155 }}
-          href="/"
-          onClick={() => handleQuit()}
-          id="gameQuitButton1"
-        >
-          {" "}
-          Quit{" "}
-        </Button>
-      </div>
-
-      <div className="progressionMap">
-        <div className="questionMapItem items">
-          {questionsMap.map((m) => (
-            <div
-              key={m.id}
-              className={
-                questionNumber === m.id
-                  ? "questionMapItem active btn btn--stripe"
-                  : "questionMapItem "
-              }
-            >
-              {m.question}
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
