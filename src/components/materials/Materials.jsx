@@ -10,7 +10,7 @@ function Materials() {
           <h1>MATERIALS</h1>
         </div>
         <ul className="linksMaterials">
-          <h2> Interested in coding?</h2>
+          <h2> Interested in <span>coding</span>?</h2>
           <h3>Here you can find some resources:</h3>
           <li>
             <a

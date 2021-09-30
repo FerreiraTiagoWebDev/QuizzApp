@@ -10,7 +10,7 @@ export default function Timer({ setGameOver, questionNumber, selected }) {
       setTimer((prev) => prev - 1);
     }, 1000);
     return () => clearInterval(interval);
-  }, [timer, setGameOver]);
+  }, [timer, setGameOver, selected]);
 
   useEffect(() => {
     setTimer(30);

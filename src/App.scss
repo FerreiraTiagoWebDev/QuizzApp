@@ -82,6 +82,8 @@ a {
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   display: block;
+  cursor: pointer;
+  letter-spacing:2px;
 
 }
 
@@ -117,7 +119,7 @@ a {
   @include border-radius;
   @include font-weight;
 }
-.challenge {
+.contact {
   background-color: rgb(150, 103, 103);
   @include flex-center;
   @include border-radius;

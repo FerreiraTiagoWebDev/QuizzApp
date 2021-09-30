@@ -1,8 +1,39 @@
 @import "../../global.scss";
 
 .contactContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#contactButton {
+  background-image: linear-gradient(
+    to left,
+    #4676cc 0%,
+    #e5e5be 51%,
+    #4676cc 100%
+  );
+  width: 40vw;
+  height: 8vh;
+  font-weight: 900;
+  letter-spacing: 5px;
+  margin: 10px;
+  padding: 15px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+
+  @include flex-center;
+  @include border-radius;
+
+  &:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
 }

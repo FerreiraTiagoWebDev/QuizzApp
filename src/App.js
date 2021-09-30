@@ -51,20 +51,20 @@ function App() {
                 <Link to="/mode">
                   <button className="play btn-grad">Play</button>
                 </Link>
-                <Link to="/mode">
+                {/* <Link to="/mode">
                   <button className="mode btn-grad">Mode</button>
-                </Link>
+                </Link> */}
                 {/* <Link to="/settings">
                   <button className="settings btn-grad">Settings</button>
                 </Link>
                 <Link to="/resources">
                   <button className="resources btn-grad">Resources</button>
-                </Link>
-                <Link to="/challenge">
-                  <button className="challenge btn-grad">Challenge</button>
                 </Link> */}
                 <Link to="/materials">
                   <button className="materials btn-grad">Materials</button>
+                </Link>
+                <Link to="/contact">
+                  <button className="contact btn-grad">Contact</button>
                 </Link>
               </div>
             </div>

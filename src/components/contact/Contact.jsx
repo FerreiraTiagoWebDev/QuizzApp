@@ -1,21 +1,22 @@
+
 import React from "react";
 import "./contact.scss";
 
 function Contact() {
   return (
     <div className="container contactContainer">
-      <div>
+      <div className="buttonContainer3">
         Creator:
-        <button className="btn-grad" style={{margin: "50px"}}>
-          <a
-            href="https://portfolio-695c2.web.app/"
-            style={{ cursor: "pointer" }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <a
+          href="https://ferreira-tiago.web.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ margin: "50px" }}
+        >
+          <button id="contactButton" style={{ cursor: "pointer" }}>
             Tiago Ferreira
-          </a>
-        </button>
+          </button>
+        </a>
       </div>
     </div>
   );

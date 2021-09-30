@@ -5,16 +5,13 @@ import Categories from "../../Data/Categories";
 import { useHistory } from "react-router";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
-
-
-
 function Mode({ name, setName, fetchQuestions }) {
   const [category, setCategory] = useState("");
-   const [difficulty, setDifficulty] = useState("");
+  const [difficulty, setDifficulty] = useState("");
   const [error, setError] = useState(false);
 
   const history = useHistory();
-  
+
   const handleSubmit = () => {
     if (!category || !difficulty || !name) {
       setError(true);
@@ -23,7 +20,6 @@ function Mode({ name, setName, fetchQuestions }) {
       setError(false);
       fetchQuestions(category, difficulty);
       history.push("/play");
-
     }
   };
 
@@ -33,13 +29,14 @@ function Mode({ name, setName, fetchQuestions }) {
       <div className="modeSelect">
         {error && <ErrorMessage>Please Complete The Form</ErrorMessage>}
         <TextField
-          InputProps = {{
+          InputProps={{
             style: {
               fontSize: 20,
             },
           }}
           style={{ marginBottom: 25 }}
           label="Your Name"
+          inputProps={{ maxLength: 14 }}
           variant="outlined"
           onChange={(e) => setName(e.target.value)}
         />
@@ -53,7 +50,7 @@ function Mode({ name, setName, fetchQuestions }) {
         >
           {Categories.map((cat) => (
             <MenuItem key={cat.category} value={cat.value}>
-              {cat.category} 
+              {cat.category}
             </MenuItem>
           ))}
         </TextField>

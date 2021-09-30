@@ -56,8 +56,12 @@
   }
   h2 {
     margin-bottom: 2vh;
+
+    span{
+      color: crimson;
+    }
     @media (max-width: 400px) {
-        font-size: 3vw;    
+        font-size: 3vw;   
     }
   }
   h3 {
