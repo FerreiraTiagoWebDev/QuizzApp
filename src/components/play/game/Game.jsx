@@ -4,6 +4,7 @@ import ErrorMessage from "../../errorMessage/ErrorMessage";
 import Timer from "../../Timer/Timer";
 import "./game.scss";
 
+
 export default function Game({ name, questions, score, setScore }) {
   const [options, setOptions] = useState();
   const [currQues, setCurrQues] = useState(0);
@@ -90,6 +91,13 @@ export default function Game({ name, questions, score, setScore }) {
     handleNext();
   }
 
+  function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
+  }
+
+  console.log()
+
   return (
     <div className="container gameContainer">
       {gameOver ? (
@@ -135,7 +143,9 @@ export default function Game({ name, questions, score, setScore }) {
           </div>
           <div className="gameQuestions">
             <div className="gameQuestion">
-              <h3> {questions[currQues].question}</h3>
+              <h3> 
+                {htmlDecode(questions[currQues].question)}
+               </h3>
             </div>
           </div>
           <div className="gameButtonNext">
