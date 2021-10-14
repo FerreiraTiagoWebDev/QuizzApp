@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ErrorMessage from "../../errorMessage/ErrorMessage";
 import Timer from "../../Timer/Timer";
 import "./game.scss";
-
+import { AllHtmlEntities } from "html-entities";
 
 export default function Game({ name, questions, score, setScore }) {
   const [options, setOptions] = useState();
@@ -91,12 +91,12 @@ export default function Game({ name, questions, score, setScore }) {
     handleNext();
   }
 
-  function htmlDecode(input) {
-    var doc = new DOMParser().parseFromString(input, "text/html");
-    return doc.documentElement.textContent;
-  }
+  // function htmlDecode(input) {
+  //   var doc = new DOMParser().parseFromString(input, "text/html");
+  //   return doc.documentElement.textContent;
+  // }
 
-  console.log()
+  console.log();
 
   return (
     <div className="container gameContainer">
@@ -143,9 +143,9 @@ export default function Game({ name, questions, score, setScore }) {
           </div>
           <div className="gameQuestions">
             <div className="gameQuestion">
-              <h3> 
-                {htmlDecode(questions[currQues].question)}
-               </h3>
+              <h3>
+                {new AllHtmlEntities().decode(questions[currQues].question)}
+              </h3>
             </div>
           </div>
           <div className="gameButtonNext">
