@@ -6,11 +6,14 @@
 }
 
 .modeTitle {
-  font-size: 2.5rem;
+  font-size: calc(12px + 3vw);
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 400px) {
+    
+  }
 }
 
 .modeSelect {
@@ -20,27 +23,51 @@
   margin-bottom: 5vh;
   flex-direction: column;
   padding: 30px;
-  width: 70%;
+  width: 60vw;
+  height: 50vh;
   background-color: rgba($color: #ffffff, $alpha: 0.6);
   border-radius: 40px;
-
-  #modeButtonStartQuiz {
-      transition: 0.3s ease-in;
-    background: #4676cc;
-    &:hover {
-        transform: scale(1.05);
-        letter-spacing: 2px;
-        
-  
-      }
+  @media (max-width: 400px) {
+    width: 70vw;
+    height: 55vh;
   }
   
+
+  #textFieldName,
+  #textFieldCat,
+  #textFieldDif {
+    font-size: calc(10px + 1vw);
+    width: 55vw;
+    height: 3.5vh;
   
+    @media (max-width: 400px) {
+      width: 55vw;
+    height: 1.5vh;
+    font-size: calc(12px + 0.5vw);
+    }
+  }
+
+  #modeButtonStartQuiz {
+    transition: 0.3s ease-in;
+    background: #4676cc;
+  
+    &:hover {
+      transform: scale(1.05);
+      letter-spacing: 2px;
+    }
+    @media (max-height: 600px) {
+      height: 6vh;
+    }
+  }
 }
 #modeButtonHomepage {
   background-color: rgba(220, 20, 60, 0.747);
 
   &:hover {
     background-color: crimson;
+  }
+  @media (max-height: 600px) {
+    height: 6vh;
+    margin-bottom: 50px;
   }
 }

@@ -29,6 +29,8 @@ function Mode({ name, setName, fetchQuestions }) {
       <div className="modeSelect">
         {error && <ErrorMessage>Please Complete The Form</ErrorMessage>}
         <TextField
+          className="textField"
+          id="textFieldName"
           InputProps={{
             style: {
               fontSize: 20,
@@ -41,6 +43,8 @@ function Mode({ name, setName, fetchQuestions }) {
           onChange={(e) => setName(e.target.value)}
         />
         <TextField
+          className="textField"
+          id="textFieldCat"
           select
           style={{ marginBottom: 25 }}
           label="Category"
@@ -49,17 +53,23 @@ function Mode({ name, setName, fetchQuestions }) {
           value={category}
         >
           {Categories.map((cat) => (
-            <MenuItem key={cat.category} value={cat.value}>
+            <MenuItem
+              className="textField"
+              key={cat.category}
+              value={cat.value}
+            >
               {cat.category}
             </MenuItem>
           ))}
         </TextField>
 
         <TextField
+          className="textField"
+          id="textFieldDif"
           select
           label="Difficulty"
           variant="outlined"
-          style={{ marginBottom: 30 }}
+          style={{ marginBottom: 30, color:"white" }}
           onChange={(e) => setDifficulty(e.target.value)}
           value={difficulty}
         >

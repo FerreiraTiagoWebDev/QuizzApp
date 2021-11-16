@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import React from "react";
 import "./materials.scss";
 
@@ -36,6 +37,16 @@ function Materials() {
             </a>
           </li>
         </ul>
+        <Button
+        variant="contained"
+        color="secondary"
+        size="large"
+        style={{ alignSelf: "center", marginTop: 20 }}
+        href="/"
+        id="modeButtonHomepage"
+      >
+        Go to homepage
+      </Button>
       </div>
     </div>
   );

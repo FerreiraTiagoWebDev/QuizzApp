@@ -13,7 +13,7 @@ a {
 
 .GlobalApp {
   background-image: url(./BG.png);
-  background-position: center;
+  background-position: 52.5% 50%;
   background-size: fill;
   color: white;
   display: flex;
@@ -29,7 +29,7 @@ a {
 
 .container {
   height: 92vh;
-  width: 75vw;
+  width: 85vw;
   display: flex;
   margin: 0 auto;
   background-color: rgba($color: #000000, $alpha: 0.4);

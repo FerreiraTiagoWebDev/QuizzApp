@@ -5,6 +5,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  #modeButtonHomepage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    margin: 0 auto;
+  }
 }
 #contactButton {
   background-image: linear-gradient(
